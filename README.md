@@ -1,13 +1,13 @@
-NYT Letter Boxed Helper
+# **NYT Letter Boxed Helper**
 
 Welcome to the NYT Letter Boxed Helper repository! This tool is designed to assist players of the New York Times (NYT) Letter Boxed game by providing solutions and helpful features to solve puzzles more efficiently.
 
-Features
+# **Features**
 Word Finder: Quickly find words that can be formed using the given letters.
 Longest Word: Find the longest word that can be formed using the given letters.
 Data Cleaning: Allows you to use your own word lists - Clean and preprocess word lists to remove consecutive letters and special characters, ensuring only valid words are considered.
 
-Usage
+# **Usage**
 To use the NYT Letter Boxed Helper:
 
 Clone this repository to your local machine.
@@ -16,13 +16,16 @@ If you want to replace the word list, replace the "english.txt" file with your o
 If you don't want to input the same tiles every time, look for the section in the code that looks like this:
 
 top = ["f","d","o"]
+
 left = ["i","h","u"]
+
 right = ["p","t","e"]
+
 bottom = ["g","l","r"]
 
 and replace the letters with your own.
 
-PLEASE NOTE 
+# **PLEASE NOTE**
 
 The default wordlist was obtained from "https://github.com/xajkep/wordlists/tree/master". All credit goes to them.
 
