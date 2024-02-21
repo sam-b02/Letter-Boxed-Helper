@@ -1,20 +1,26 @@
-starting = input("Enter starting letter: ")
-letters = []
-viable = []
+import time
 
 def initboard():
+    board = open("Letter Boxed\Words\letter boxed diagram.txt","r")
+    side = None
     top = []
     left = []
     right = []
     bottom = []
-    for i in range(0,3):
-        top.append(input("Enter top letter: "))
-    for i in range(0,3):
-        left.append(input("Enter left letter: "))
-    for i in range(0,3):
-        right.append(input("Enter right letter: "))
-    for i in range(0,3):
-        bottom.append(input("Enter bottom letter: "))
+    for line in board:
+        line = line.strip()
+        if line:
+            if line in ["top","left","right","bottom"]:
+                side = line
+            elif side:
+                if side == "top":
+                    top.append(line)
+                elif side == "left":
+                    left.append(line)
+                elif side == "right":
+                    right.append(line)
+                elif side == "bottom":
+                    bottom.append(line)
     combine = top + left + right + bottom
     return top, left, right, bottom, combine
 
@@ -34,8 +40,11 @@ def checkpos(x, top, left, right, bottom):
 def contain(line, letters):
     return all(char in set(line) for char in letters)
 
-loop = True
+starting = input("Enter starting letter: ")
+letters = []
+viable = []
 
+loop = True
 while loop:
     letter = input("Enter a letter that can be anywhere inside the word. Enter 'done' if you are done: ")
     if letter.lower() != "done":
@@ -43,14 +52,13 @@ while loop:
     else:
         loop = False
 
+wordlist = open("Letter Boxed\Words\wordlist.txt", "r")
 counter = 0
-
-wordlist = open("Letter Boxed\wordlist.txt", "r")
 
 for line in wordlist:
     counter += 1
-    if counter % 1000 == 0:
-        print(counter)
+    if counter % 50000 == 0:
+        print(f"Scanned {counter} lines so far")
     line = line.strip()
     if contain(line, letters) and line[0] == starting:
         viable.append(line)
@@ -60,37 +68,24 @@ print("Done!")
 if len(viable) == 0:
     print("No words found.")
 else:
-    print(f"{len(viable)} words found.")
-    q = input("1. Refine further or 2. Print list: ")
-    if q == "2":
-        for line in viable:
+    print(f"{len(viable)} words found with the selected letters.\n\nChecking if they match letter boxed rules now...")
+    time.sleep(1)
+    top, left, right, bottom, combine = initboard()
+    letterboxed_viable = []
+
+    for line in viable:
+        viableBool = True
+        for i in range(0,len(line)-2):
+            if checkpos(line[i], top, left, right, bottom) == checkpos(line[i+1], top, left, right, bottom) or checkpos(line[i], top, left, right, bottom) == None or checkpos(line[i+1], top, left, right, bottom) == None:
+                viableBool = False
+        for i in line:
+            if i not in combine:
+                viableBool = False
+        if viableBool == True:
+            letterboxed_viable.append(line)
+    if len(letterboxed_viable) == 0:
+        print("No lines were found that matched the given criteria.")    
+    else:
+        for line in letterboxed_viable:
             print(line)
-    elif q == "1":
-        counter = 0
-        board = input("1. enter new or 2. use prefilled?")
-        if board == "1":
-            top, left, right, bottom = initboard()
-        else:
-            top = ["f","d","o"]
-            left = ["i","h","u"]
-            right = ["p","t","e"]
-            bottom = ["g","l","r"]
-            combine = top + left + right + bottom
-        letterboxed_viable = []
-        print(combine)
-        for line in viable:
-            viableBool = True
-            for i in range(0,len(line)-2):
-                if checkpos(line[i], top, left, right, bottom) == checkpos(line[i+1], top, left, right, bottom) or checkpos(line[i], top, left, right, bottom) == None or checkpos(line[i+1], top, left, right, bottom) == None:
-                    viableBool = False
-            for i in line:
-                if i not in combine:
-                    viableBool = False
-            if viableBool == True:
-                letterboxed_viable.append(line)
-        if len(letterboxed_viable) == 0:
-            print("lmao no lines")    
-        else:
-            for line in letterboxed_viable:
-                print(line)
-            print(f"{len(letterboxed_viable)} lines found")
+        print(f"{len(letterboxed_viable)} lines found")

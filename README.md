@@ -10,20 +10,13 @@ Data Cleaning: Allows you to use your own word lists - Clean and preprocess word
 # **Usage**
 To use the NYT Letter Boxed Helper:
 
-Clone this repository to your local machine.
+To run this program, clone this repository to your local machine and run it.
 
 If you want to replace the word list, replace the "english.txt" file with your own wordlist named as such. Run the "datacleaner.py" file and you should be good to go.
-If you don't want to input the same tiles every time, look for the section in the code that looks like this:
 
-top = ["f","d","o"]
+To change the titles, open the text file at "Letter Boxed\Words\wordlist.txt" and replace the letters with your own in the same format.
 
-left = ["i","h","u"]
-
-right = ["p","t","e"]
-
-bottom = ["g","l","r"]
-
-and replace the letters with your own.
+Note that the list is cleaned to remove any repeated letters, so if you want to use this as a way to search for words with your parameters, simply open "Letter Boxed\Data cleaning\DataCleaner.py" and change the variable "RepeatOn" at line 24 to True.
 
 # **PLEASE NOTE**
 

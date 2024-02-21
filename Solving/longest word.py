@@ -1,16 +1,26 @@
+import time
+
 def initboard():
+    board = open("Letter Boxed\Words\letter boxed diagram.txt","r")
+    side = None
     top = []
     left = []
     right = []
     bottom = []
-    for i in range(0,3):
-        top.append(input("Enter top letter: "))
-    for i in range(0,3):
-        left.append(input("Enter left letter: "))
-    for i in range(0,3):
-        right.append(input("Enter right letter: "))
-    for i in range(0,3):
-        bottom.append(input("Enter bottom letter: "))
+    for line in board:
+        line = line.strip()
+        if line:
+            if line in ["top","left","right","bottom"]:
+                side = line
+            elif side:
+                if side == "top":
+                    top.append(line)
+                elif side == "left":
+                    left.append(line)
+                elif side == "right":
+                    right.append(line)
+                elif side == "bottom":
+                    bottom.append(line)
     combine = top + left + right + bottom
     return top, left, right, bottom, combine
 
@@ -30,29 +40,20 @@ def checkpos(x, top, left, right, bottom):
 
 Words = []
 
-board = input("1. enter new or 2. use prefilled?")
-if board == "1":
-    top, left, right, bottom = initboard()
-else:
-    top = ["f","d","o"]
-    left = ["i","h","u"]
-    right = ["p","t","e"]
-    bottom = ["g","l","r"]
-    combine = top + left + right + bottom
+
+top, left, right, bottom, combine = initboard()
 
 
-
-wordlist = open("Letter Boxed\wordlist.txt", "r")
+wordlist = open("Letter Boxed\Words\wordlist.txt", "r")
 
 counter = 0
 
 for line in wordlist:
     line = line.strip()
     counter += 1
-    if counter % 1000 == 0:
-        print(counter)
+    if counter % 50000 == 0:
+        print(f"Scanned {counter} lines so far")
     valid = True
-
 
     if checkpos(line[-1], top, left, right, bottom) == None or checkpos(line[-2], top, left, right, bottom) == None:
         valid = False
@@ -62,19 +63,18 @@ for line in wordlist:
             if checkpos(line[i], top, left, right, bottom) == checkpos(line[i+1], top, left, right, bottom) or checkpos(line[i], top, left, right, bottom) == None:
                 valid = False
     if valid == True:
-        print
         Words.append(line.strip())
-    
-                
 
-print(len(Words))
+print(f"Found {len(Words)} letterboxed words\n\nSorting the list...")
+time.sleep(1)
 
 for i in range(1, len(Words)):
-        key = Words[i]
-        j = i - 1
-        while j >= 0 and len(key) < len(Words[j]):
-            Words[j + 1] = Words[j]
-            j -= 1
-        Words[j + 1] = key   
+    key = Words[i]
+    j = i - 1
+    while j >= 0 and len(key) < len(Words[j]):
+        Words[j + 1] = Words[j]
+        j -= 1
+    Words[j + 1] = key   
 
-print(Words)
+for line in Words:
+    print(line)
