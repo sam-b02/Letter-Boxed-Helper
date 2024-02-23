@@ -40,6 +40,12 @@ def checkpos(x, top, left, right, bottom):
 def contain(line, letters):
     return all(char in set(line) for char in letters)
 
+def char_check(line, combine):
+    for char in line:
+        if char not in combine:
+            return False
+    return True
+
 starting = input("Enter starting letter: ")
 letters = []
 viable = []
@@ -74,13 +80,11 @@ else:
     letterboxed_viable = []
 
     for line in viable:
-        viableBool = True
-        for i in range(0,len(line)-2):
-            if checkpos(line[i], top, left, right, bottom) == checkpos(line[i+1], top, left, right, bottom) or checkpos(line[i], top, left, right, bottom) == None or checkpos(line[i+1], top, left, right, bottom) == None:
-                viableBool = False
-        for i in line:
-            if i not in combine:
-                viableBool = False
+        viableBool = char_check(line,combine)
+        if viableBool:
+            for i in range(0,len(line)-2):
+                if line[i+1] in checkpos(line[i], top, left, right, bottom):
+                    viableBool = False
         if viableBool == True:
             letterboxed_viable.append(line)
     if len(letterboxed_viable) == 0:

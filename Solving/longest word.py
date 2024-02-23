@@ -37,6 +37,11 @@ def checkpos(x, top, left, right, bottom):
         temp = None
     return temp
 
+def char_check(line, combine):
+    for char in line:
+        if char not in combine:
+            return False
+    return True
 
 Words = []
 
@@ -55,13 +60,15 @@ for line in wordlist:
         print(f"Scanned {counter} lines so far")
     valid = True
 
-    if checkpos(line[-1], top, left, right, bottom) == None or checkpos(line[-2], top, left, right, bottom) == None:
+    if char_check(line, combine) == False:
         valid = False
     
-    for i in range(0,len(line)-2):
-        if valid == True:
-            if checkpos(line[i], top, left, right, bottom) == checkpos(line[i+1], top, left, right, bottom) or checkpos(line[i], top, left, right, bottom) == None:
-                valid = False
+    if valid == True:
+        for i in range(0,len(line)-2):
+            if valid == True:
+                if line[i+1] in checkpos(line[i], top, left, right, bottom):
+                    valid = False
+                    
     if valid == True:
         Words.append(line.strip())
 
