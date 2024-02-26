@@ -4,7 +4,9 @@ Welcome to the NYT Letter Boxed Helper repository! This tool is designed to assi
 
 # **Features**
 Word Finder: Quickly find words that can be formed using the given letters.
+
 Longest Word: Find the longest word that can be formed using the given letters.
+
 Data Cleaning: Allows you to use your own word lists - Clean and preprocess word lists to remove consecutive letters and special characters, ensuring only valid words are considered.
 
 # **Usage**
