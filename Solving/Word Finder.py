@@ -1,7 +1,8 @@
 import time
 
+
 def initboard():
-    board = open("Letter Boxed\Words\letter boxed diagram.txt","r")
+    board = open("Letter Boxed\Words\letter boxed diagram.txt", "r")
     side = None
     top = []
     left = []
@@ -10,7 +11,7 @@ def initboard():
     for line in board:
         line = line.strip()
         if line:
-            if line in ["top","left","right","bottom"]:
+            if line in ["top", "left", "right", "bottom"]:
                 side = line
             elif side:
                 if side == "top":
@@ -23,6 +24,7 @@ def initboard():
                     bottom.append(line)
     combine = top + left + right + bottom
     return top, left, right, bottom, combine
+
 
 def checkpos(x, top, left, right, bottom):
     if x in top:
@@ -37,8 +39,10 @@ def checkpos(x, top, left, right, bottom):
         temp = None
     return temp
 
+
 def contain(line, letters):
     return all(char in set(line) for char in letters)
+
 
 def char_check(line, combine):
     for char in line:
@@ -46,15 +50,17 @@ def char_check(line, combine):
             return False
     return True
 
+
 def word_check(line, combine):
     if char_check(line, combine) == False:
         return False
-    
-    for i in range(1,len(line)):
-        if line[i] in checkpos(line[i-1], top, left, right, bottom):
+
+    for i in range(1, len(line)):
+        if line[i] in checkpos(line[i - 1], top, left, right, bottom):
             return False
-    
+
     return True
+
 
 starting = input("Enter starting letter: ")
 letters = []
@@ -62,7 +68,9 @@ viable = []
 
 loop = True
 while loop:
-    letter = input("Enter a letter that can be anywhere inside the word. Enter 'done' if you are done: ")
+    letter = input(
+        "Enter a letter that can be anywhere inside the word. Enter 'done' if you are done: "
+    )
     if letter.lower() != "done":
         letters.append(letter.lower())
     else:
@@ -84,16 +92,18 @@ print("Done!")
 if len(viable) == 0:
     print("No words found.")
 else:
-    print(f"{len(viable)} words found with the selected letters.\n\nChecking if they match letter boxed rules now...")
+    print(
+        f"{len(viable)} words found with the selected letters.\n\nChecking if they match letter boxed rules now..."
+    )
     time.sleep(1)
     top, left, right, bottom, combine = initboard()
     letterboxed_viable = []
     for line in viable:
-        viableBool = word_check(line,combine)
+        viableBool = word_check(line, combine)
         if viableBool == True:
             letterboxed_viable.append(line)
     if len(letterboxed_viable) == 0:
-        print("No lines were found that matched the given criteria.")    
+        print("No lines were found that matched the given criteria.")
     else:
         for line in letterboxed_viable:
             print(line)

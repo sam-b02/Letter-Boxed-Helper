@@ -1,7 +1,8 @@
 import time
 
+
 def initboard():
-    board = open("Letter Boxed\Words\letter boxed diagram.txt","r")
+    board = open("Letter Boxed\Words\letter boxed diagram.txt", "r")
     side = None
     top = []
     left = []
@@ -10,7 +11,7 @@ def initboard():
     for line in board:
         line = line.strip()
         if line:
-            if line in ["top","left","right","bottom"]:
+            if line in ["top", "left", "right", "bottom"]:
                 side = line
             elif side:
                 if side == "top":
@@ -23,6 +24,7 @@ def initboard():
                     bottom.append(line)
     combine = top + left + right + bottom
     return top, left, right, bottom, combine
+
 
 def checkpos(x, top, left, right, bottom):
     if x in top:
@@ -37,21 +39,24 @@ def checkpos(x, top, left, right, bottom):
         temp = None
     return temp
 
+
 def char_check(line, combine):
     for char in line:
         if char not in combine:
             return False
     return True
 
+
 def word_check(line, combine):
     if char_check(line, combine) == False:
         return False
-    
-    for i in range(1,len(line)):
-        if line[i] in checkpos(line[i-1], top, left, right, bottom):
+
+    for i in range(1, len(line)):
+        if line[i] in checkpos(line[i - 1], top, left, right, bottom):
             return False
-    
+
     return True
+
 
 Words = []
 
