@@ -48,7 +48,7 @@ def char_check(line, combine):
 
 
 def word_check(line, combine):
-    if char_check(line, combine) == False:
+    if char_check(line, combine) is False:
         return False
 
     for i in range(1, len(line)):
@@ -76,7 +76,7 @@ for line in wordlist:
         print(f"Scanned {counter} lines so far")
     valid = word_check(line, combine)
 
-    if valid == True:
+    if valid is True:
         Words.append(line.strip())
 
 print(f"Found {len(Words)} letterboxed words\n\nSorting the list...")

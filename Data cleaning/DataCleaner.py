@@ -21,7 +21,7 @@ counter = 0
 
 for line in file:
     counter += 1
-    if conseq(line) and spec(line) == False and len(line) >= 3:
+    if conseq(line) and spec(line) is False and len(line) >= 3:
         cleanfile.write(f"{(line.lower().strip())}\n")
     if counter % 1000 == 0:
         print(counter)

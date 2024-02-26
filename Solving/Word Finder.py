@@ -52,7 +52,7 @@ def char_check(line, combine):
 
 
 def word_check(line, combine):
-    if char_check(line, combine) == False:
+    if char_check(line, combine) is False:
         return False
 
     for i in range(1, len(line)):
@@ -100,7 +100,7 @@ else:
     letterboxed_viable = []
     for line in viable:
         viableBool = word_check(line, combine)
-        if viableBool == True:
+        if viableBool is True:
             letterboxed_viable.append(line)
     if len(letterboxed_viable) == 0:
         print("No lines were found that matched the given criteria.")
