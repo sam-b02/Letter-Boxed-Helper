@@ -43,6 +43,16 @@ def char_check(line, combine):
             return False
     return True
 
+def word_check(line, combine):
+    if char_check(line, combine) == False:
+        return False
+    
+    for i in range(1,len(line)):
+        if line[i] in checkpos(line[i-1], top, left, right, bottom):
+            return False
+    
+    return True
+
 Words = []
 
 
@@ -56,32 +66,19 @@ counter = 0
 for line in wordlist:
     line = line.strip()
     counter += 1
+
     if counter % 50000 == 0:
         print(f"Scanned {counter} lines so far")
-    valid = True
+    valid = word_check(line, combine)
 
-    if char_check(line, combine) == False:
-        valid = False
-    
-    if valid == True:
-        for i in range(0,len(line)-2):
-            if valid == True:
-                if line[i+1] in checkpos(line[i], top, left, right, bottom):
-                    valid = False
-                    
     if valid == True:
         Words.append(line.strip())
 
 print(f"Found {len(Words)} letterboxed words\n\nSorting the list...")
+
 time.sleep(1)
 
-for i in range(1, len(Words)):
-    key = Words[i]
-    j = i - 1
-    while j >= 0 and len(key) < len(Words[j]):
-        Words[j + 1] = Words[j]
-        j -= 1
-    Words[j + 1] = key   
+Words.sort(key=len)
 
 for line in Words:
     print(line)

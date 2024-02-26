@@ -46,6 +46,16 @@ def char_check(line, combine):
             return False
     return True
 
+def word_check(line, combine):
+    if char_check(line, combine) == False:
+        return False
+    
+    for i in range(1,len(line)):
+        if line[i] in checkpos(line[i-1], top, left, right, bottom):
+            return False
+    
+    return True
+
 starting = input("Enter starting letter: ")
 letters = []
 viable = []
@@ -54,7 +64,7 @@ loop = True
 while loop:
     letter = input("Enter a letter that can be anywhere inside the word. Enter 'done' if you are done: ")
     if letter.lower() != "done":
-        letters.append(letter)
+        letters.append(letter.lower())
     else:
         loop = False
 
@@ -78,13 +88,8 @@ else:
     time.sleep(1)
     top, left, right, bottom, combine = initboard()
     letterboxed_viable = []
-
     for line in viable:
-        viableBool = char_check(line,combine)
-        if viableBool:
-            for i in range(0,len(line)-2):
-                if line[i+1] in checkpos(line[i], top, left, right, bottom):
-                    viableBool = False
+        viableBool = word_check(line,combine)
         if viableBool == True:
             letterboxed_viable.append(line)
     if len(letterboxed_viable) == 0:

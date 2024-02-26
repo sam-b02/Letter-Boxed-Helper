@@ -2,23 +2,23 @@
 top
 
 h
-v
-t
+n
+a
 
 left
 
-m
-e
-n
+s
+u
+f
 
 right
 
-i
-d
-r
+m
+o
+l
 
 bottom
 
-o
-c
+i
+t
 b
