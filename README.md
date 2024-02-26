@@ -18,12 +18,9 @@ If you want to replace the word list, replace the "english.txt" file with your o
 
 To change the titles, open the text file at "Letter Boxed\Words\wordlist.txt" and replace the letters with your own in the same format.
 
-Note that the list is cleaned to remove any repeated letters, so if you want to use this as a way to search for words with your parameters, simply open "Letter Boxed\Data cleaning\DataCleaner.py" and change the variable "RepeatOn" at line 24 to True.
 
 # **PLEASE NOTE**
 
 The default wordlist was obtained from "https://github.com/xajkep/wordlists/tree/master". All credit goes to them.
 
 The wordlist contains unrecognized and archaic words that the NYTs will not recognize. Make sure to check multiple words.
-
-
