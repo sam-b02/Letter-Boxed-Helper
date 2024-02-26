@@ -1,7 +1,7 @@
 import re
 
 
-def conseq(line, RepeatOn):
+def conseq(line):
     pattern = r"(.)\1"
     return bool(re.search(pattern, line))
 
