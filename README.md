@@ -24,3 +24,7 @@ You can now run any program you want.
 - Please run `longestword.py` before running `twowords.py`. The program will not work otherwise.
 - The default wordlist was obtained from [wordlists GitHub repository](https://github.com/xajkep/wordlists/tree/master). All credit goes to them.
 - The wordlist contains unrecognized and archaic words that the NYTs will not recognize. Make sure to check multiple words.
+
+
+# **License**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
