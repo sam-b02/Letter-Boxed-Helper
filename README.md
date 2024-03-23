@@ -14,7 +14,7 @@ To use the NYT Letter Boxed Helper:
 1. Clone this repository to your local machine.
 2. {OPTIONAL} If you want to replace the word list, replace the `Words\english.txt` file with your own wordlist named as such. 
 Run the `Data cleaning\DataCleaner.py` file to preprocess the word list.
-3. Change the letters used by opening the text file at `Words\wordlist.txt` and replace the letters with your own in the same format.
+3. Change the letters used by opening the text file at `Words\letter boxed diagram.txt` and replace the letters with your own in the same format.
 4. Run the `Solving\longest word.py` program.
 
 You can now run any program you want.
