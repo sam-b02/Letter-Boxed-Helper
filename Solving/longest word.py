@@ -1,28 +1,26 @@
-import time
-
-
 def initboard():
-    board = open("Letter Boxed\Words\letter boxed diagram.txt", "r")
+    board = open("Letter Boxed\\Words\\letter boxed diagram.txt", "r")
     side = None
-    top = []
-    left = []
-    right = []
-    bottom = []
+    top = set()
+    left = set()
+    right = set()
+    bottom = set()
     for line in board:
         line = line.strip()
         if line:
             if line in ["top", "left", "right", "bottom"]:
                 side = line
             elif side:
-                if side == "top":
-                    top.append(line)
-                elif side == "left":
-                    left.append(line)
-                elif side == "right":
-                    right.append(line)
-                elif side == "bottom":
-                    bottom.append(line)
-    combine = top + left + right + bottom
+                for char in line:
+                    if side == "top":
+                        top.add(char)
+                    elif side == "left":
+                        left.add(char)
+                    elif side == "right":
+                        right.add(char)
+                    elif side == "bottom":
+                        bottom.add(char)
+    combine = top.union(left, right, bottom)
     return top, left, right, bottom, combine
 
 
@@ -41,49 +39,36 @@ def checkpos(x, top, left, right, bottom):
 
 
 def char_check(line, combine):
-    for char in line:
-        if char not in combine:
-            return False
-    return True
+    return all(char in combine for char in line)
 
 
 def word_check(line, combine):
-    if char_check(line, combine) is False:
+    if not char_check(line, combine):
         return False
-
     for i in range(1, len(line)):
         if line[i] in checkpos(line[i - 1], top, left, right, bottom):
             return False
-
     return True
 
 
 Words = []
-
-
 top, left, right, bottom, combine = initboard()
-
-
-wordlist = open("Letter Boxed\Words\wordlist.txt", "r")
-
+wordlist = open("Letter Boxed\\Words\\wordlist.txt", "r")
 counter = 0
-
 for line in wordlist:
     line = line.strip()
     counter += 1
-
     if counter % 50000 == 0:
         print(f"Scanned {counter} lines so far")
     valid = word_check(line, combine)
-
-    if valid is True:
-        Words.append(line.strip())
+    if valid:
+        Words.append(line)
 
 print(f"Found {len(Words)} letterboxed words\n\nSorting the list...")
+Words.sort(key=len, reverse=True)
 
-time.sleep(1)
+with open(r"Letter Boxed\Words\LongestWords.txt", "w") as file:
+    for line in Words:
+        file.write(line + "\n")
 
-Words.sort(key=len)
-
-for line in Words:
-    print(line)
+print("Done! You can find the words at Letter Boxed\Words\LongestWords.txt")
