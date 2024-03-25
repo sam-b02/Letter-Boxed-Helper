@@ -1,26 +1,25 @@
 
 top
 
-l
+e
+r
 o
-a
+
 
 left
 
-r
-h
-b
-
+d
+k
+i
 
 right
 
-i
-x
+j
 t
-
+a
 
 bottom
 
-s
 c
-u
+l
+v

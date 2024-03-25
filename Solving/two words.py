@@ -50,7 +50,7 @@ for i in range(len(words)):
     word1 = words[i]
     last_char = word1[-1]
     bit_vector1 = bit_vectors[word1]
-    for j in range(i + 1, len(words)):
+    for j in range(len(words)):
         word2 = words[j]
         if last_char == word2[0]:
             bit_vector2 = bit_vectors[word2]
