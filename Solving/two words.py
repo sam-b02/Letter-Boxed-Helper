@@ -52,10 +52,9 @@ for i in range(len(words)):
     bit_vector1 = bit_vectors[word1]
     for j in range(len(words)):
         word2 = words[j]
-        if last_char == word2[0]:
+        if last_char == word2[0] and word1 != word2:
             bit_vector2 = bit_vectors[word2]
             if contains_all_characters(bit_vector1, bit_vector2, alpha_vector):
-                # If the pair of words satisfies the conditions, add it to the list of valid pairs.
                 valid_pairs.append(word1 + " " + word2)
 
 end_time = time.time()
