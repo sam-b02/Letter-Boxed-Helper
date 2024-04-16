@@ -9,11 +9,8 @@ def contains_all_characters(bit_vector1, bit_vector2, alphabet_vector):
 def get_combine():
     combine = ""
     with open(r"Letter Boxed\Words\letter boxed diagram.txt", "r") as file:
-        # Extract letters from the letter boxed diagram file.
-        for line in file:
-            line = line.strip()
-            if line not in {"top", "bottom", "left", "right"}:
-                combine += str(line)
+        content = file.read()
+    combine = "".join(content.split())
     return combine
 
 

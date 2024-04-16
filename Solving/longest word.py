@@ -2,30 +2,13 @@ import time
 
 
 def initboard():
-    combine = ""
-    board = open("Letter Boxed\\Words\\letter boxed diagram.txt", "r")
-    side = None
-    top = set()
-    left = set()
-    right = set()
-    bottom = set()
-    for line in board:
-        line = line.strip()
-        if line:
-            if line not in {"top", "bottom", "left", "right"}:
-                combine += str(line)
-            if line in ["top", "left", "right", "bottom"]:
-                side = line
-            elif side:
-                for char in line:
-                    if side == "top":
-                        top.add(char)
-                    elif side == "left":
-                        left.add(char)
-                    elif side == "right":
-                        right.add(char)
-                    elif side == "bottom":
-                        bottom.add(char)
+    with open("Letter Boxed\\Words\\letter boxed diagram.txt", "r") as board:
+        top = board.readline().strip().split(" ")
+        left = board.readline().strip().split(" ")
+        right = board.readline().strip().split(" ")
+        bottom = board.readline().strip().split(" ")
+
+    combine = "".join(top + left + right + bottom)
 
     alpha_vector = 0
     for char in combine:

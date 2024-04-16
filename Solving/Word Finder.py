@@ -2,109 +2,55 @@ import time
 
 
 def initboard():
-    board = open("Letter Boxed\Words\letter boxed diagram.txt", "r")
-    side = None
-    top = []
-    left = []
-    right = []
-    bottom = []
-    for line in board:
-        line = line.strip()
-        if line:
-            if line in ["top", "left", "right", "bottom"]:
-                side = line
-            elif side:
-                if side == "top":
-                    top.append(line)
-                elif side == "left":
-                    left.append(line)
-                elif side == "right":
-                    right.append(line)
-                elif side == "bottom":
-                    bottom.append(line)
-    combine = top + left + right + bottom
+    with open(r"Letter Boxed\Words\letter boxed diagram.txt", "r") as board:
+        top = board.readline().strip().split(" ")
+        left = board.readline().strip().split(" ")
+        right = board.readline().strip().split(" ")
+        bottom = board.readline().strip().split(" ")
+
+    combine = "".join(top + left + right + bottom)
     return top, left, right, bottom, combine
 
 
-def checkpos(x, top, left, right, bottom):
-    if x in top:
-        temp = top
-    elif x in left:
-        temp = left
-    elif x in right:
-        temp = right
-    elif x in bottom:
-        temp = bottom
-    else:
-        temp = None
-    return temp
+def get_letters():
+    starting = input("Enter starting letter: ")
+    letters = []
+    while True:
+        letter = input(
+            "Enter a letter that can be anywhere inside the word. Enter 'done' if you are done: "
+        )
+        if letter.lower() != "done":
+            letters.append(letter.lower())
+        else:
+            return starting, letters
 
 
-def contain(line, letters):
-    return all(char in set(line) for char in letters)
+starting, letters = get_letters()
+viable_words = []
 
+start_time = time.time()
 
-def char_check(line, combine):
-    for char in line:
-        if char not in combine:
-            return False
-    return True
+with open(r"Letter Boxed\Words\LongestWords.txt") as file:
+    for line in file:
+        viable = True
+        line = line.strip()  # Remove trailing newline charactersa
+        if line[0] != starting:
+            viable = False
+        else:
+            for i in letters:
+                if i not in line:
+                    viable = False
 
+        if viable:
+            viable_words.append(line)
 
-def word_check(line, combine):
-    if char_check(line, combine) is False:
-        return False
+end_time = time.time()
+execution_time = end_time - start_time
 
-    for i in range(1, len(line)):
-        if line[i] in checkpos(line[i - 1], top, left, right, bottom):
-            return False
-
-    return True
-
-
-starting = input("Enter starting letter: ")
-letters = []
-viable = []
-
-loop = True
-while loop:
-    letter = input(
-        "Enter a letter that can be anywhere inside the word. Enter 'done' if you are done: "
-    )
-    if letter.lower() != "done":
-        letters.append(letter.lower())
-    else:
-        loop = False
-
-wordlist = open("Letter Boxed\Words\wordlist.txt", "r")
-counter = 0
-
-for line in wordlist:
-    counter += 1
-    if counter % 50000 == 0:
-        print(f"Scanned {counter} lines so far")
-    line = line.strip()
-    if contain(line, letters) and line[0] == starting:
-        viable.append(line)
-
-print("Done!")
-
-if len(viable) == 0:
-    print("No words found.")
+if len(viable_words) == 0:
+    print("no words found that match given criteria")
 else:
-    print(
-        f"{len(viable)} words found with the selected letters.\n\nChecking if they match letter boxed rules now..."
-    )
-    time.sleep(1)
-    top, left, right, bottom, combine = initboard()
-    letterboxed_viable = []
-    for line in viable:
-        viableBool = word_check(line, combine)
-        if viableBool is True:
-            letterboxed_viable.append(line)
-    if len(letterboxed_viable) == 0:
-        print("No lines were found that matched the given criteria.")
-    else:
-        for line in letterboxed_viable:
-            print(line)
-        print(f"{len(letterboxed_viable)} lines found")
+    for i in viable_words:
+        print(i)
+
+print(f"task completed in {execution_time} seconds")
