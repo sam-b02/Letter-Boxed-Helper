@@ -5,7 +5,7 @@ Welcome to the NYT Letter Boxed Helper repository! This tool is designed to assi
 # **Features**
 - Two Words: Find a solution for the puzzle in two words, if possible.
 - Word Finder: Quickly find words that can be formed using the given letters.
-- Longest Word: Find the longest word that can be formed using the given letters.
+- Longest Word: Generates all possible valid words, and then finds the longest word possible. (results are saved at `Words\LongestWords.txt`)
 - Data Cleaning: Allows you to use your own word lists - Clean and prepare word lists to remove consecutive letters and special characters, ensuring only valid words are considered.
 
 # **Usage**
