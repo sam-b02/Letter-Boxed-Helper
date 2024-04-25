@@ -15,8 +15,8 @@ def get_combine():
 
 
 def get_words():
-    with open("Letter Boxed\Words\LongestWords.txt", "r") as file:
-        # Read and return all words from the LongestWords.txt file.
+    with open(r"Letter Boxed\Words\valid word list.txt", "r") as file:
+        # Read and return all words from the valid word list.txt file.
         return [line.strip() for line in file]
 
 

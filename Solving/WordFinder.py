@@ -30,7 +30,7 @@ viable_words = []
 
 start_time = time.time()
 
-with open(r"Letter Boxed\Words\LongestWords.txt") as file:
+with open(r"Letter Boxed\Words\valid word list.txt") as file:
     for line in file:
         viable = True
         line = line.strip()  # Remove trailing newline charactersa

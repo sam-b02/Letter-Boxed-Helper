@@ -46,7 +46,7 @@ def word_check(line):
 
 
 def get_words():
-    with open("Letter Boxed\Words\wordlist.txt", "r") as file:
+    with open("Letter Boxed\Words\word list.txt", "r") as file:
         return [line.strip() for line in file]
 
 
