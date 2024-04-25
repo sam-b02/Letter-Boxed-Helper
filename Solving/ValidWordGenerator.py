@@ -67,11 +67,11 @@ for line in wordlist:
 print(f"Found {len(Words)} letterboxed words\n\nSorting the list...")
 Words.sort(key=len, reverse=True)
 
-with open(r"Letter Boxed\Words\LongestWords.txt", "w") as file:
+with open(r"Letter Boxed\Words\valid word list.txt", "w") as file:
     for line in Words:
         file.write(line + "\n")
 
-print("Done! You can find the words at Letter Boxed\Words\LongestWords.txt")
+print("Done! You can find the words at Letter Boxed\Words\valid word list.txt")
 
 end = time.time()
 execution_time = end - start
