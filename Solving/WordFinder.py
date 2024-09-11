@@ -25,6 +25,15 @@ def get_letters():
             return starting, letters
 
 
+def word_check(word):
+    if word[0] != starting:
+        return False
+    for i in letters:
+        if i not in word:
+            return False
+    return True
+
+
 starting, letters = get_letters()
 viable_words = []
 
@@ -32,16 +41,8 @@ start_time = time.time()
 
 with open(r"Letter Boxed\Words\valid word list.txt") as file:
     for line in file:
-        viable = True
-        line = line.strip()  # Remove trailing newline charactersa
-        if line[0] != starting:
-            viable = False
-        else:
-            for i in letters:
-                if i not in line:
-                    viable = False
-
-        if viable:
+        line = line.strip()
+        if word_check(line):
             viable_words.append(line)
 
 end_time = time.time()

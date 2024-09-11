@@ -2,7 +2,7 @@ import time
 
 
 def initboard():
-    with open("Letter Boxed\\Words\\letter boxed diagram.txt", "r") as board:
+    with open(r"Letter Boxed\Words\letter boxed diagram.txt", "r") as board:
         top = board.readline().strip().split(" ")
         left = board.readline().strip().split(" ")
         right = board.readline().strip().split(" ")
