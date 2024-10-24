@@ -43,22 +43,22 @@ words = get_words()
 bit_vectors = precompute_bit_vectors(words)
 
 valid_pairs = []
+counter = 0
 for i in range(len(words)):
+    counter += 1
     word1 = words[i]
     last_char = word1[-1]
     bit_vector1 = bit_vectors[word1]
-    for j in range(len(words)):
+    for j in range(counter, len(words)):
         word2 = words[j]
-        if last_char == word2[0] and word1 != word2:
+        if last_char == word2[0]:
             bit_vector2 = bit_vectors[word2]
             if contains_all_characters(bit_vector1, bit_vector2, alpha_vector):
                 valid_pairs.append(word1 + " " + word2)
 
-end_time = time.time()
-execution_time = end_time - start_time
 
-if len(valid_pairs) > 0:
-    print(f"Found the pairs in {execution_time} seconds")
+if len(valid_pairs) != 0:
+    print(f"Found {len(valid_pairs)} pairs in {time.time() - start_time} seconds")
     for i in valid_pairs:
         print(i)
 else:
