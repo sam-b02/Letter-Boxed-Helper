@@ -12,6 +12,10 @@ Welcome to the NYT Letter Boxed Helper repository! This tool is designed to assi
 To use the NYT Letter Boxed Helper:
 
 1. Clone this repository to your local machine.
+```
+git clone https://github.com/sam-b02/Letter-Boxed-Helper
+cd Letter Boxed
+```
 2. {OPTIONAL} If you want to replace the word list, replace the `Words\english.txt` file with your own wordlist with the same name. 
 Then, run the `Data cleaning\DataCleaner.py` file to clean the word list and make it ready for processing.
 3. Change the letters used by opening the text file at `Words\letter boxed diagram.txt` and replace the letters with your own in the same format. Each line in the file should represent a "side" of the letterbox.
