@@ -4,7 +4,7 @@ Welcome to the NYT Letter Boxed Helper repository! This tool is designed to assi
 
 # **Features**
 - Two Words: Find a solution for the puzzle in two words, if possible.
-- Word Finder: Quickly find words that can be formed using the given letters.
+- Word Finder: Quickly find words that can be formed using user input letters.
 - Valid Word Generator: Generates all possible valid words, sorts it by the longest word, and saves the results at `Words\valid word list.txt`
 - Data Cleaning: Allows you to use your own word lists - Clean and prepare word lists to remove consecutive letters and special characters, ensuring only valid words are considered.
 
@@ -13,8 +13,8 @@ To use the NYT Letter Boxed Helper:
 
 1. Clone this repository to your local machine.
 2. {OPTIONAL} If you want to replace the word list, replace the `Words\english.txt` file with your own wordlist with the same name. 
-Run the `Data cleaning\DataCleaner.py` file to clean the word list and make it ready for processing.
-3. Change the letters used by opening the text file at `Words\letter boxed diagram.txt` and replace the letters with your own in the same format.
+Then, run the `Data cleaning\DataCleaner.py` file to clean the word list and make it ready for processing.
+3. Change the letters used by opening the text file at `Words\letter boxed diagram.txt` and replace the letters with your own in the same format. Each line in the file should represent a "side" of the letterbox.
 4. {IMPORTANT} Run the `Solving\ValidWordGenerator.py` program. Without doing this, the program will not have been updated with the newer letters.
 
 You can now run any program you want.
