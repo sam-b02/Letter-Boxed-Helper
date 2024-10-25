@@ -13,7 +13,7 @@ def spec(line):
 
 file = open(r"Letter Boxed\Words\english.txt", "r")
 
-cleanfile = open(r"Letter Boxed\Words\wordlist.txt", "w")
+cleanfile = open(r"Letter Boxed\Words\word list.txt", "w")
 
 print("opened files")
 
