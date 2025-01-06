@@ -2,7 +2,7 @@ import time
 
 
 def initboard():
-    with open(r"Letter Boxed\Words\letter boxed diagram.txt", "r") as board:
+    with open(r"Words\letter boxed diagram.txt", "r") as board:
         top = board.readline().strip().split(" ")
         left = board.readline().strip().split(" ")
         right = board.readline().strip().split(" ")
@@ -46,7 +46,7 @@ def word_check(line):
 
 
 def get_words():
-    with open("Letter Boxed\Words\word list.txt", "r") as file:
+    with open("Words\word list.txt", "r") as file:
         return [line.strip() for line in file]
 
 
@@ -67,11 +67,11 @@ for line in wordlist:
 print(f"Found {len(Words)} letterboxed words\n\nSorting the list...")
 Words.sort(key=len, reverse=True)
 
-with open(r"Letter Boxed\Words\valid word list.txt", "w") as file:
+with open(r"Words\valid word list.txt", "w") as file:
     for line in Words:
         file.write(line + "\n")
 
-print("Done! You can find the words at Letter Boxed\Words\valid word list.txt")
+print("Done! You can find the words at Words\valid word list.txt")
 
 end = time.time()
 execution_time = end - start

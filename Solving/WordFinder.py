@@ -2,7 +2,7 @@ import time
 
 
 def initboard():
-    with open(r"Letter Boxed\Words\letter boxed diagram.txt", "r") as board:
+    with open(r"Words\letter boxed diagram.txt", "r") as board:
         top = board.readline().strip().split(" ")
         left = board.readline().strip().split(" ")
         right = board.readline().strip().split(" ")
@@ -39,7 +39,7 @@ viable_words = []
 
 start_time = time.time()
 
-with open(r"Letter Boxed\Words\valid word list.txt") as file:
+with open(r"Words\valid word list.txt") as file:
     for line in file:
         line = line.strip()
         if word_check(line):

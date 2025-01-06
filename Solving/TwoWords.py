@@ -8,14 +8,14 @@ def contains_all_characters(bit_vector1, bit_vector2, alphabet_vector):
 
 def get_combine():
     combine = ""
-    with open(r"Letter Boxed\Words\letter boxed diagram.txt", "r") as file:
+    with open(r"Words\letter boxed diagram.txt", "r") as file:
         content = file.read()
     combine = "".join(content.split())
     return combine
 
 
 def get_words():
-    with open(r"Letter Boxed\Words\valid word list.txt", "r") as file:
+    with open(r"Words\valid word list.txt", "r") as file:
         # Read and return all words from the valid word list.txt file.
         return [line.strip() for line in file]
 

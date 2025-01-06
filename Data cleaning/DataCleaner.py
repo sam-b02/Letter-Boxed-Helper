@@ -11,9 +11,9 @@ def spec(line):
     return bool(re.search(pattern, line))
 
 
-file = open(r"Letter Boxed\Words\english.txt", "r")
+file = open(r"Words\english.txt", "r")
 
-cleanfile = open(r"Letter Boxed\Words\word list.txt", "w")
+cleanfile = open(r"Words\word list.txt", "w")
 
 print("opened files")
 
