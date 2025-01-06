@@ -14,7 +14,7 @@ To use the NYT Letter Boxed Helper:
 1. Clone this repository to your local machine.
 ```
 git clone https://github.com/sam-b02/Letter-Boxed-Helper
-cd Letter Boxed
+cd Letter-Boxed-Helper
 ```
 2. {OPTIONAL} If you want to replace the word list, replace the `Words\english.txt` file with your own wordlist with the same name. 
 Then, run the `Data cleaning\DataCleaner.py` file to clean the word list and make it ready for processing.
